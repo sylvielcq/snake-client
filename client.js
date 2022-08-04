@@ -18,9 +18,9 @@ const connect = function () {
     // conn.write("Move: up");
   });
 
-  setInterval(() => {
-    conn.write("Move: up");
-  }, 50);
+  // setInterval(() => {
+  //   conn.write("Move: up");
+  // }, 50);
 
   // receive data from server
   conn.on('data', (data) => {
