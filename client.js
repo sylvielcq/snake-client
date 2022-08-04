@@ -15,7 +15,12 @@ const connect = function () {
   conn.on("connect", () => {
     console.log("Successfully connected to game server");
     conn.write(`Name: ${name}`);
+    // conn.write("Move: up");
   });
+
+  setInterval(() => {
+    conn.write("Move: up");
+  }, 50);
 
   // receive data from server
   conn.on('data', (data) => {
@@ -29,3 +34,11 @@ console.log("Connecting ...");
 connect();
 
 module.exports = connect;
+
+/*
+Movement commands supported by the game server:
+"Move: up" - move up one square (unless facing down)
+"Move: down" - move down one square (unless facing up)
+"Move: left" - move left one square (unless facing right)
+"Move: right" - move left one square (unless facing left)
+*/
