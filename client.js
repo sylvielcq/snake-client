@@ -1,5 +1,7 @@
 const net = require("net");
 
+const name = 'SLE';
+
 // establishes a connection with the game server
 const connect = function () {
   const conn = net.createConnection({
@@ -9,6 +11,11 @@ const connect = function () {
 
   // interpret incoming data as text
   conn.setEncoding("utf8");
+
+  conn.on("connect", () => {
+    console.log("Successfully connected to game server");
+    conn.write(`Name: ${name}`);
+  });
 
   // receive data from server
   conn.on('data', (data) => {
